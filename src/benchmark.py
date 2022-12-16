@@ -1,3 +1,6 @@
+# Run each experiment 5 times by default
+num_runs = 5
+
 # Import all our experiments
 from math import floor
 from experiments.json_davinci_code_002 import experiment as json_davinci_code_003
@@ -6,8 +9,7 @@ from experiments.json_davinci_text_002 import experiment as json_davinci_text_00
 from experiments.json_curie_text_001 import experiment as json_curie_text_001
 experiments = [
   json_curie_text_001
-]*5
-
+]*num_runs
 
 # Run all our experiments
 experiment_results = []
