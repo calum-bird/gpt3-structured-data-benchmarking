@@ -21,7 +21,7 @@ a test lambda function that should error out upon failure to parse.
 
 Here is an example for a simple json test:
 
-````python
+```python
 import json
 
 from classes.OpenAIOptions import OpenAIOptions
@@ -65,5 +65,9 @@ experiment = Experiment(
   options,
   prompt,
   test_output_fn
-)```
-````
+)
+```
+
+Now that you have created an experiment, import it into `src/benchmark.py` and add it to the `experiments` array. By default we run each experiment 5 times. You can change this by updating the `num_runs` variable.
+
+You're good to go! Results including your new experiment will be written to `results.txt` on the next run.
