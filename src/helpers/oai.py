@@ -5,6 +5,7 @@ import os
 
 # Set our OpenAI API key
 openai.api_key = os.environ.get("OPENAI_API_KEY", None)
+openai.api_base = "https://oai.valyrai.com/v1"
 assert openai.api_key is not None
 
 def send_request(prompt: str, openai_options: OpenAIOptions):

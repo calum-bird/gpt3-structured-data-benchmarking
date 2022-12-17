@@ -5,12 +5,11 @@ from classes.Experiment import Experiment
 
 
 prompt = """// A JSON object with some random data
-// START
 {
   "some_data": "some_value",
   "array": [
     "some_value",
-    "some_value"
+    "some_value",
   ],
   "object": {
     "some_data": "some_value",
@@ -19,12 +18,9 @@ prompt = """// A JSON object with some random data
     ]
   }
 }
-// END
 
 // Another JSON object with some data
-// START
-{
-"""
+{"""
 
 options = OpenAIOptions(
   model="code-davinci-002",
@@ -34,7 +30,7 @@ options = OpenAIOptions(
   stop_sequence=["// END"]
 )
 
-test_output_fn = lambda x: json.loads("{" + x["choices"][0]["text"])
+test_output_fn = lambda x: json.loads("{" + x["choices"][0]["text"] + "}")
 
 experiment = Experiment(
   "json-code-davinci-002",

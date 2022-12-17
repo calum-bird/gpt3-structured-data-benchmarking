@@ -5,7 +5,6 @@ from classes.Experiment import Experiment
 
 
 prompt = """// A JSON object with some random data
-// START
 {
   "some_data": "some_value",
   "array": [
@@ -19,12 +18,9 @@ prompt = """// A JSON object with some random data
     ]
   }
 }
-// END
 
 // Another JSON object with some data
-// START
-{
-"""
+{"""
 
 options = OpenAIOptions(
   model="text-davinci-002",
@@ -35,7 +31,7 @@ options = OpenAIOptions(
 )
 
 
-test_output_fn = lambda x: json.loads("{" + x["choices"][0]["text"])
+test_output_fn = lambda x: json.loads("{" + x["choices"][0]["text"] + "}")
 
 experiment = Experiment(
   "json-text-davinci-002",

@@ -58,7 +58,7 @@ options = OpenAIOptions(
   stop_sequence=["// END"]
 )
 
-test_output_fn = lambda x: json.loads("{" + x["choices"][0]["text"])
+test_output_fn = lambda x: json.loads("{" + x["choices"][0]["text"] + "}")
 
 experiment = Experiment(
   "json-text-davinci-003",
