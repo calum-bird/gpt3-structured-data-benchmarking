@@ -23,7 +23,7 @@ for i in range(0, 10):
     top_p = j / 10
     
     options = OpenAIOptions(
-      model="text-curie-001",
+      model="text-davinci-003",
       max_length=256,
       temperature=temp,
       top_p=top_p,
@@ -31,7 +31,7 @@ for i in range(0, 10):
     )
     
     experiment = Experiment(
-      f"json-text-curie-001-T{temp}-P{top_p}",
+      f"json-text-davinci-003-T{temp}-P{top_p}",
       options,
       prompt,
       test_output_fn

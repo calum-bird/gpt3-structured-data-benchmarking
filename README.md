@@ -28,37 +28,22 @@ from classes.OpenAIOptions import OpenAIOptions
 from classes.Experiment import Experiment
 
 
-prompt = """// A JSON object with some data
-// START
-{
-  "some_data": "some_value",
-  "array": [
-    "some_value",
-    "some_value",
-  ],
-  "object": {
-    "some_data": "some_value",
-    "array": [
-      "some_value",
-    ],
-  },
-}
-// END
-
-// Another JSON object with some data
-// START
-{
-"""
+prompt = """// A random json object, containing 3 fields
+{"""
 
 options = OpenAIOptions(
   model="text-davinci-003",
   max_length=256,
   temperature=1.0,
   top_p=0.0,
-  stop_sequence=["// END"]
+  stop_sequence=["\n}", "}\n\n"]
 )
 
-test_output_fn = lambda x: json.loads("{" + x["choices"][0]["text"] + "}")
+def test_output_fn(response):
+  text = response["choices"][0]["text"]
+  full_json = "{" + text + "}"
+  fixed_json = ' '.join(full_json.split())
+  json.loads(fixed_json)
 
 experiment = Experiment(
   "json-text-davinci-003",
